@@ -67,7 +67,7 @@ function draw() {
                 || yPos + bird.height >= pipe[i].y + pipeUp.height + gap)
             || yPos + bird.height >= cvs.height - fg.height
         ) {
-            location.reload();
+            startGame();
         }
 
         if(pipe[i].x === 5) {
@@ -85,6 +85,12 @@ function draw() {
 
     yPos += grav;
     requestAnimationFrame(draw);
+}
+
+function startGame() {
+    if(window.confirm("GAME OVER.\nYour score: " + score + "\n\nRestart?")) {
+        location.reload();
+    }
 }
 
 pipeBtm.onload = draw;
